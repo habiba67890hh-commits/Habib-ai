@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080611">
+  <meta name="description" content="HABIB AI 🇧🇩 - Bengali & English Personal AI Assistant">
+  <title>HABIB AI 🇧🇩</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">H<span>AI</span></div>
+    <div class="brand">
+      <b>HABIB AI</b>
+      <small>Made in Bangladesh 🇧🇩</small>
+    </div>
+    <button id="settingsOpen" class="round" title="Settings" aria-label="Settings">⚙</button>
+  </header>
+
+  <main>
+    <!-- 1. Home View -->
+    <section id="homeView" class="view active">
+      <div class="intro">
+        <small>YOUR PERSONAL AI ASSISTANT</small>
+        <h1>কীভাবে সাহায্য করতে পারি?</h1>
+        <p>বাংলায় বা English-এ প্রশ্ন করো।</p>
+      </div>
+
+      <!-- 3D Glowing AI Orb -->
+      <button id="orb" class="orb-wrap" title="Tap to talk" aria-label="Tap orb to talk">
+        <span class="orb">
+          <i class="orb-inner"></i>
+          <span class="orb-rings"></span>
+        </span>
+      </button>
+
+      <div id="voiceStatus" class="voice-status">HABIB AI প্রস্তুত</div>
+      <p class="hint">কথা বলতে গোলকটিতে চাপ দাও অথবা নিচে লিখো</p>
+
+      <!-- Quick Action Prompts -->
+      <div class="quick">
+        <button data-prompt="বাংলায় কৃত্রিম বুদ্ধিমত্তা (AI) সহজভাবে বুঝিয়ে বলো।">
+          <span class="q-icon">✦</span>
+          <div>
+            <b>AI কী?</b>
+            <small>সহজ বাংলায় জানুন</small>
+          </div>
+        </button>
+        <button data-prompt="আমার জন্য একটি ফলপ্রসূ দৈনিক পড়াশোনা ও কাজের রুটিন তৈরি করে দাও।">
+          <span class="q-icon">▤</span>
+          <div>
+            <b>পড়াশোনার রুটিন</b>
+            <small>দৈনিক পরিকল্পনা</small>
+          </div>
+        </button>
+        <button data-command="youtube">
+          <span class="q-icon">▶</span>
+          <div>
+            <b>YouTube</b>
+            <small>ভিডিও ওপেন করো</small>
+          </div>
+        </button>
+        <button data-command="chrome">
+          <span class="q-icon">🔍</span>
+          <div>
+            <b>Google Search</b>
+            <small>ওয়েব ব্রাউজার</small>
+          </div>
+        </button>
+        <button data-command="camera">
+          <span class="q-icon">◉</span>
+          <div>
+            <b>Camera</b>
+            <small>ক্যামেরা চালু করো</small>
+          </div>
+        </button>
+        <button data-prompt="আমাকে একটি মজার অনুপ্রেরণামূলক উক্তি ও গল্প বলো।">
+          <span class="q-icon">💡</span>
+          <div>
+            <b>অনুপ্রেরণা</b>
+            <small>সুন্দর বার্তা</small>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. Chat View -->
+    <section id="chatView" class="view">
+      <div class="head">
+        <h2>তোমার চ্যাট</h2>
+        <button id="newChat" class="btn-sm">＋ নতুন চ্যাট</button>
+      </div>
+      <div id="messages" class="messages"></div>
+      <div class="composer">
+        <button id="chatMic" title="Voice Input" aria-label="Voice input">🎙</button>
+        <textarea id="messageInput" rows="1" placeholder="এখানে বাংলায় বা ইংরেজিতে প্রশ্ন লিখুন…"></textarea>
+        <button id="send" title="Send" aria-label="Send message">➤</button>
+      </div>
+      <p id="chatStatus" class="hint">HABIB AI সাথে কথা বলার জন্য প্রস্তুত</p>
+    </section>
+
+    <!-- 3. History View -->
+    <section id="historyView" class="view">
+      <div class="head">
+        <h2>কথোপকথন ইতিহাস</h2>
+        <button id="clearHistory" class="btn-sm btn-danger">সব মুছুন</button>
+      </div>
+      <input id="search" class="field" placeholder="কথোপকথন খুঁজুন…">
+      <div id="historyList"></div>
+    </section>
+
+    <!-- 4. Settings View -->
+    <section id="settingsView" class="view">
+      <h2>Settings / সেটিংস</h2>
+
+      <article>
+        <h3>✦ সার্ভার ও Gemini সংযোগ</h3>
+        <p>Render বা আপনার Cloud-এ ডিপ্লয় করা থাকলে Backend URL এখানে স্বয়ংক্রিয় কাজ করবে। অন্য সার্ভার হলে নিচের বক্সে দিন:</p>
+        <label for="backendUrl">Backend URL (ঐচ্ছিক)</label>
+        <input id="backendUrl" class="field" placeholder="https://habib-ai.onrender.com (খালি রাখলে স্বয়ংক্রিয় ডিটেক্ট হবে)">
+        <button id="saveSettings" class="primary">সেটিংস সংরক্ষণ</button>
+        <p id="connectionStatus" class="hint">সংযুক্ত সার্ভার পরীক্ষা করা হচ্ছে…</p>
+        <button id="testConnection" class="secondary">সার্ভার সংযোগ পরীক্ষা</button>
+      </article>
+
+      <article>
+        <h3>🎙 Voice & Language / ভয়েস সেটিংস</h3>
+        <label for="voiceLanguage">কথা শোনার ভাষা</label>
+        <select id="voiceLanguage" class="field">
+          <option value="bn-BD">বাংলা (Bangladesh)</option>
+          <option value="en-US">English (US)</option>
+        </select>
+        <label class="switch">
+          <span>উত্তর মুখে পড়ে শোনাবে (TTS)</span>
+          <input id="speakReplies" type="checkbox" checked>
+        </label>
+        <label class="switch">
+          <span>উত্তরের পর স্বয়ংক্রিয় শুনবে</span>
+          <input id="continuousVoice" type="checkbox">
+        </label>
+      </article>
+
+      <article>
+        <h3>🧠 Chat & Memory / চ্যাট হিস্ট্রি</h3>
+        <label class="switch">
+          <span>এই ফোনে চ্যাট হিস্ট্রি সেভ রাখবে</span>
+          <input id="saveHistory" type="checkbox" checked>
+        </label>
+        <button id="forgetMemory" class="secondary btn-danger">সব Saved Chat মুছুন</button>
+        <p class="hint">আপনার সমস্ত চ্যাট নিরাপদে আপনার ফোনের ব্রাউজারে সংরক্ষিত থাকে।</p>
+      </article>
+
+      <article>
+        <h3>📱快捷 Apps & Controls / শর্টকাট</h3>
+        <div class="action-grid">
+          <button data-command="youtube">YouTube খোলো</button>
+          <button data-command="chrome">Google Search</button>
+          <button data-command="camera">Camera খোলো</button>
+        </div>
+      </article>
+
+      <p class="hint center">HABIB AI v1.0.0 • Made with ❤️ in Bangladesh 🇧🇩</p>
+    </section>
+  </main>
+
+  <!-- In-app Camera Modal -->
+  <div id="cameraModal" class="camera-modal">
+    <div class="camera-content">
+      <div class="camera-header">
+        <h3>◉ ক্যামেরা ভিউ</h3>
+        <button id="closeCamera" class="round">✕</button>
+      </div>
+      <div class="video-wrapper">
+        <video id="cameraVideo" autoplay playsinline></video>
+      </div>
+      <p class="camera-tip">ক্যামেরা লাইভ প্রিভিউ সক্রিয়</p>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav>
+    <button data-view="homeView" class="active" title="Home">
+      <span class="nav-icon">⌂</span>
+      <small>Home</small>
+    </button>
+    <button data-view="chatView" title="Chat">
+      <span class="nav-icon">▤</span>
+      <small>Chat</small>
+    </button>
+    <button id="navOrb" class="nav-orb" title="Talk to AI" aria-label="Orb Voice button">
+      <span></span>
+    </button>
+    <button data-view="historyView" title="History">
+      <span class="nav-icon">◷</span>
+      <small>History</small>
+    </button>
+    <button data-view="settingsView" title="Settings">
+      <span class="nav-icon">⚙</span>
+      <small>Settings</small>
+    </button>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

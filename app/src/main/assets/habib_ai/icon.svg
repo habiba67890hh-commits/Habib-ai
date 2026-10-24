@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#2d164d"/>
+      <stop offset="70%" stop-color="#080611"/>
+    </radialGradient>
+    <radialGradient id="orbGlow" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#d5ffff"/>
+      <stop offset="15%" stop-color="#43e8e1"/>
+      <stop offset="45%" stop-color="#7c3aed"/>
+      <stop offset="80%" stop-color="#140b35"/>
+    </radialGradient>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe8a3"/>
+      <stop offset="100%" stop-color="#f3c969"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="128" fill="url(#bg)"/>
+
+  <!-- Outer Neon Rings -->
+  <circle cx="256" cy="230" r="150" fill="none" stroke="#a855f7" stroke-width="4" opacity="0.4" filter="url(#glow)"/>
+  <circle cx="256" cy="230" r="130" fill="none" stroke="#f3c969" stroke-width="2" opacity="0.6"/>
+
+  <!-- Core Glowing AI Orb -->
+  <circle cx="256" cy="230" r="110" fill="url(#orbGlow)" filter="url(#glow)"/>
+
+  <!-- High-tech Rings -->
+  <ellipse cx="256" cy="230" rx="125" ry="45" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.5" transform="rotate(-25 256 230)"/>
+
+  <!-- Logo Text -->
+  <text x="256" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="url(#goldText)" text-anchor="middle" letter-spacing="4">HABIB AI</text>
+  <text x="256" y="455" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#a8a0c2" text-anchor="middle" letter-spacing="1">MADE IN BANGLADESH 🇧🇩</text>
+</svg>

@@ -1,11 +1,15 @@
-<div align="center">
+# HABIB AI 🇧🇩
+Personal AI Assistant in Bengali & English, with a glowing animated 3D AI orb, voice recognition, speech synthesis, camera preview, and secure server-side Google Gemini API integration.
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+## Features
+- **3D Glowing Orb**: Fluid animated AI orb with listening states and purple-gold aesthetic.
+- **Bilingual Conversations**: Native Bengali (বাংলা) and English dialogue support powered by Gemini API.
+- **Voice Input & TTS**: Speech-to-text and text-to-speech built-in.
+- **Secure Gemini Integration**: Server-side API key handling via `process.env.GEMINI_API_KEY`.
+- **In-App Camera**: Camera preview without popup-blocker issues.
+- **PWA Ready**: Installable on Android home screen directly from mobile browsers.
 
-  <h1>Built with AI Studio</h2>
-
-  <p>The fastest path from prompt to production with Gemini.</p>
-
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+## Tech Stack
+- Frontend: HTML5, CSS3, JavaScript (ES6+), Web Manifest, Service Worker
+- Backend: Node.js, Express, Cors, Dotenv
+- Android Wrapper: Jetpack Compose, WebView, Material Design 3
